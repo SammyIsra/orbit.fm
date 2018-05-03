@@ -6,6 +6,7 @@ import styled from "react-emotion";
 import PageWithSidebar from "../components/PageWithSidebar";
 import PodcastInfo from "../components/PodcastInfo";
 import Subscribe from "../components/Subscribe";
+import AudioPlayer from "../components/AudioPlayer";
 
 const Remarkable = require("remarkable");
 const markdown = new Remarkable({ html: true });
@@ -50,10 +51,8 @@ export default ({ data }) => {
       <p>{DateTime.fromISO(episode.publicationDate).toLocaleString()}</p>
       <div>{episode.shortDescription}</div>
       <AudioContainer>
-        <ReactAudioPlayer
-          src={`https://www.podtrac.com/pts/redirect.mp3/${episode.audioUrl}`}
-          preload="none"
-          controls
+        <AudioPlayer
+          url={`${episode.audioUrl}`}
         />
       </AudioContainer>
       <h3>Hosts</h3>
